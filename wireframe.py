@@ -40,7 +40,7 @@ class Wireframe:
     def translate(self, axis, dist):
         if axis in ['x', 'y', 'z']:
             for node in self.nodes:
-                setattr(node, axis, getattr(node, axis)+d) # change the node objects's attributes
+                setattr(node, axis, getattr(node, axis)+dist) # change the node objects's attributes
 
     def scale(self, scale):
         for node in self.nodes:
