@@ -15,8 +15,8 @@ class ProjectionViewer:
 		self.wireframes = {}
 		self.displayNodes = True
 		self.displayEdges = True
-		self.nodeColour = (255,255,255)
-		self.edgeColour = (200,200,200)
+		self.nodeColour = (255,50,150)
+		self.edgeColour = (255,255,10)
 		self.nodeRadius = 4
 
 
@@ -59,6 +59,11 @@ class ProjectionViewer:
 		for wireframe in self.wireframes.values():
 			wireframe.scale(scale)
 
+	def rotateAll(self, axis, angle):
+		""" Rotate all wireframe about their centre, along a given axis by a given angle. """
+		for wireframe in self.wireframes.values():
+		    wireframe.rotate(axis, angle)
+
 
 key_to_function = {
 	pygame.K_LEFT:   (lambda x: x.translateAll('x', -10)),
@@ -66,7 +71,13 @@ key_to_function = {
 	pygame.K_DOWN:   (lambda x: x.translateAll('y',  10)),
 	pygame.K_UP:     (lambda x: x.translateAll('y', -10)),
 	pygame.K_EQUALS: (lambda x: x.scaleAll(1.25)),
-	pygame.K_MINUS:  (lambda x: x.scaleAll( 0.8))}
+	pygame.K_MINUS:  (lambda x: x.scaleAll( 0.8)),
+	pygame.K_q: (lambda x: x.rotateAll('x',  0.1)),
+	pygame.K_w: (lambda x: x.rotateAll('x', -0.1)),
+	pygame.K_a: (lambda x: x.rotateAll('y',  0.1)),
+	pygame.K_s: (lambda x: x.rotateAll('y', -0.1)),
+	pygame.K_z: (lambda x: x.rotateAll('z',  0.1)),
+	pygame.K_x: (lambda x: x.rotateAll('z', -0.1))}
 
 if __name__ == '__main__':
 	pv = ProjectionViewer(400, 300)
