@@ -45,11 +45,11 @@ class ProjectionViewer:
 		for wireframe in self.wireframes.values():
 			if self.displayEdges:
 				for edge in wireframe.edges:
-					pygame.draw.aaline(self.screen, self.edgeColour, (edge.start.x, edge.start.y), (edge.stop.x, edge.stop.y), 1)
+					pygame.draw.aaline(self.screen, self.edgeColour, (edge.start.x, edge.start.y), (edge.stop.x, edge.stop.y), 1) # modify thickness to show depth
 
 			if self.displayNodes:
 				for node in wireframe.nodes:
-					pygame.draw.circle(self.screen, self.nodeColour, (int(node.x), int(node.y)), self.nodeRadius, 0)
+					pygame.draw.circle(self.screen, self.nodeColour, (int(node.x), int(node.y)), self.nodeRadius, 0) # modify radius to show depth
 
 	def translateAll(self, axis, d): # Translate all wireframes
 		for wireframe in self.wireframes.values():
